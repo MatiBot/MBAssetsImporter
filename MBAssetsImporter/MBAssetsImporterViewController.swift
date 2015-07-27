@@ -143,6 +143,7 @@ class MBAssetsImporterViewController: UIViewController {
         }
         else
         {
+            self.circularProgressBar.percent = 0;
             self.progressView.hidden = true
             self.setupView.hidden = false
         }
