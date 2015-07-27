@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		445D78331B6698450042CEF4 /* asd.m in Sources */ = {isa = PBXBuildFile; fileRef = 445D78321B6698450042CEF4 /* asd.m */; };
 		449D89E91B66305D00A5013F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D89E81B66305D00A5013F /* AppDelegate.swift */; };
 		449D89EB1B66305D00A5013F /* MBAssetsImporterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D89EA1B66305D00A5013F /* MBAssetsImporterViewController.swift */; };
 		449D89EE1B66305D00A5013F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 449D89EC1B66305D00A5013F /* Main.storyboard */; };
@@ -19,8 +18,6 @@
 /* Begin PBXFileReference section */
 		078BABDC0EDA0AE4F65293CF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C1F16A9CA63C0DE3E590967 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		445D78311B6698450042CEF4 /* asd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asd.h; sourceTree = "<group>"; };
-		445D78321B6698450042CEF4 /* asd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = asd.m; sourceTree = "<group>"; };
 		449D89E51B66305D00A5013F /* MBAssetsImporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBAssetsImporter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		449D89E81B66305D00A5013F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		449D89EA1B66305D00A5013F /* MBAssetsImporterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBAssetsImporterViewController.swift; sourceTree = "<group>"; };
@@ -78,8 +75,6 @@
 				449D89EF1B66305D00A5013F /* Assets.xcassets */,
 				449D89F11B66305D00A5013F /* LaunchScreen.storyboard */,
 				449D89F41B66305D00A5013F /* Info.plist */,
-				445D78311B6698450042CEF4 /* asd.h */,
-				445D78321B6698450042CEF4 /* asd.m */,
 			);
 			path = MBAssetsImporter;
 			sourceTree = "<group>";
@@ -215,7 +210,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445D78331B6698450042CEF4 /* asd.m in Sources */,
 				449D89EB1B66305D00A5013F /* MBAssetsImporterViewController.swift in Sources */,
 				449D89E91B66305D00A5013F /* AppDelegate.swift in Sources */,
 			);
