@@ -7,163 +7,101 @@
 //
 
 import UIKit
-import Photos
 import MBCircularProgressBar
 
-class MBAssetsImporterViewController: UIViewController {
+class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
     
     // MARK: Default Configuration
     
-    let photosExtensions = ["jpg","png"]
-    let videosExtensions = ["mp4","mov"]
     let defaultAddress = "/Users/mati/Desktop/photos_folder"
     
     // MARK: IBOutlet properties
     
-    @IBOutlet var progressView: UIView!
+    @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var setupView: UIView!
     @IBOutlet weak var fileLabel: UILabel!
     @IBOutlet weak var circularProgressBar: MBCircularProgressBarView!
     @IBOutlet weak var keepOriginal: UISwitch!
     @IBOutlet weak var importPathTextfield: UITextField!
-    
+    @IBOutlet weak var remoteImportCount: UITextField!
     
     // MARK: Properties
     
-    var shouldContinue: Bool = true
-
+    var importer: Importer?
+    
     // MARK: View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.importPathTextfield.text = defaultAddress
+        
+        if TARGET_OS_SIMULATOR != 1 {
+            self.importPathTextfield.enabled = false
+            keepOriginal.enabled = false
+        }else{
+            let dummyView = UIView(frame: CGRectMake(0, 0, 0, 0))
+            importPathTextfield.inputView = dummyView;
+            remoteImportCount.inputView = dummyView
+        }
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
     // MARK: IBActions
 
     @IBAction func cancelAction(sender: UIButton) {
-        self.shouldContinue = false;
+        importer?.cancel()
     }
     
-    @IBAction func `import`(sender: UIButton) {
+    @IBAction func importLocal(sender: UIButton) {
         
-        let path = self.importPathTextfield.text;
-        let numAssets = numberOfAssetsInPath(path!)
-        
-        if (numAssets == 0)
-        {
-            let alertController = UIAlertController(title: "", message: "There are no assets in the specified path", preferredStyle: .Alert)
+        if TARGET_OS_SIMULATOR == 1 {
+            let path = self.importPathTextfield.text;
+            importer = LocalImporter(path: path!, keepOriginal: keepOriginal.on)
+            importer?.delegate = self
+            importer?.start()
+        }else{
+            let alertController = UIAlertController(title: "", message: "Please run the app on the iOS simulator in order to import assets from a local directory", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion:nil)
-            
-            updateScreen(false)
-        }else{
-            self.shouldContinue = true
-            self.circularProgressBar.percent = 0.0
-            updateScreen(true);
-            importAssets(path!, numAssets: numAssets)
         }
     }
     
-    // MARK: Import Methods
-    
-    func numberOfAssetsInPath(path : String) -> Int{
-        var num = 0;
-        let enumerator = NSFileManager.defaultManager().enumeratorAtPath(path);
-        if(enumerator != nil){
-            while let file = enumerator!.nextObject() as? String {
-                if (isAsset(file)){
-                    num++;
-                }
-            }
-        }
-
-        return num;
-    }
-
-    func importAssets(path : String, numAssets:Int){
-        let enumerator = NSFileManager.defaultManager().enumeratorAtPath(path)!;
-        let file : String = enumerator.nextObject() as! String
-        importAssets(file, path: path, enumerator: enumerator, imagesProcessed: 0, numAssets: numAssets)
+    @IBAction func importFlickr(sender: UIButton) {
+        importer = PanoramioImporter(numberOfPictures: Int(remoteImportCount.text!)!)
+        importer?.delegate = self
+        importer?.start()
     }
     
-    func importAssets(file : String! ,path : String!, enumerator : NSDirectoryEnumerator, var imagesProcessed : Int, numAssets:Int)
-    {
-        if(self.shouldContinue == false){
-            updateScreen(false)
-            return
-        }
-        
-        self.fileLabel.text = file.lastPathComponent
-        
-        PHPhotoLibrary.requestAuthorization { (status : PHAuthorizationStatus) -> Void in
-            let fileURL = path.stringByAppendingPathComponent(file)
-            
-            PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+    // MARK: ImporterDelegate
     
-                if(self.isVideo(fileURL)){
-                    PHAssetChangeRequest.creationRequestForAssetFromVideoAtFileURL(NSURL.fileURLWithPath(fileURL))
-                }else if(self.isPhoto(fileURL)){
-                    PHAssetChangeRequest.creationRequestForAssetFromImageAtFileURL(NSURL.fileURLWithPath(fileURL))
-                }
-                }, completionHandler: { (success : Bool, error : NSError?) -> Void in
-                    
-                    if(!success && error != nil){
-                        
-                        let alertController = UIAlertController(title: "", message: error?.localizedDescription, preferredStyle: .Alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                        self.presentViewController(alertController, animated: true, completion:nil)
-                        
-                    }else if(self.keepOriginal.on == false){
-                        do{
-                            try NSFileManager.defaultManager().removeItemAtPath(fileURL)
-                        }catch _{
-                            
-                        }
-                    }
-                    
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                        self.circularProgressBar.percent = 100 * CGFloat(imagesProcessed) / CGFloat(numAssets)
-                        if let file = enumerator.nextObject() as? String{
-                            self.importAssets(file, path: path, enumerator: enumerator, imagesProcessed: ++imagesProcessed, numAssets: numAssets)
-                        }else{
-                            self.updateScreen(false)
-                        }
-                    })
-            })
-        }
+    func onStart(){
+        view.endEditing(true)
+        self.progressView.hidden = false
+        self.setupView.hidden = true
     }
     
-    func updateScreen(isImporting : Bool)
-    {
-        if (isImporting)
-        {
-            self.progressView.hidden = false
-            self.setupView.hidden = true
-        }
-        else
-        {
-            self.circularProgressBar.percent = 0;
-            self.progressView.hidden = true
-            self.setupView.hidden = false
-        }
+    func onFinish(){
+        self.circularProgressBar.percent = 0;
+        self.progressView.hidden = true
+        self.setupView.hidden = false
+        importer = nil
     }
     
-    // MARK: Convenient Methods
-    
-    func isAsset(file : String) -> Bool
-    {
-        return isPhoto(file) || isVideo(file)
+    func onProgress(progress:Float, filename:String){
+        self.circularProgressBar.percent = 100 * CGFloat(progress)
+        self.fileLabel.text = filename
     }
     
-    func isPhoto(file : String) -> Bool
-    {
-        return photosExtensions.contains(file.pathExtension.lowercaseString)
+    func onError(error:NSError){
+        print(error.localizedDescription)
     }
     
-    func isVideo(file : String) -> Bool
-    {
-        return videosExtensions.contains(file.pathExtension.lowercaseString)
+    //Calls this function when the tap is recognized.
+    func DismissKeyboard(){
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 }
 

@@ -128,73 +128,112 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vi-Hc-NoD">
                                 <rect key="frame" x="150" y="175" width="300" height="250"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L9I-dB-La2">
-                                        <rect key="frame" x="8" y="110" width="284" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WNi-ne-mo0">
+                                        <rect key="frame" x="8" y="55" width="284" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="yBT-qb-VEj"/>
+                                            <constraint firstAttribute="height" constant="30" id="eV8-6W-3sg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0l5-kr-Rxg">
+                                        <rect key="frame" x="114" y="85" width="178" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="Byb-L4-zGY"/>
+                                            <constraint firstAttribute="width" constant="178" id="sYv-al-zQf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Import from Panoramio">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="importFlickr:" destination="XCh-Rk-nI6" eventType="touchUpInside" id="h8X-Kp-Dqn"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L9I-dB-La2">
+                                        <rect key="frame" x="8" y="163" width="284" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="SST-ZR-waf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZO-9H-9SL">
-                                        <rect key="frame" x="218" y="206" width="74" height="36"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select a local folder" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="b9f-is-GIz">
+                                        <rect key="frame" x="8" y="126" width="284" height="29"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="1bi-23-cQ0"/>
-                                            <constraint firstAttribute="width" constant="74" id="MB7-Kl-2U1"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                        <state key="normal" title="Import">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="import:" destination="XCh-Rk-nI6" eventType="touchUpInside" id="vj0-nB-RaI"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select Folder" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="b9f-is-GIz">
-                                        <rect key="frame" x="8" y="44" width="284" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="29" id="ZCg-lT-uLH"/>
+                                            <constraint firstAttribute="height" constant="29" id="ZYp-aw-Hfk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep original?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVK-av-bg7">
-                                        <rect key="frame" x="12" y="177" width="157" height="21"/>
+                                        <rect key="frame" x="8" y="208" width="157" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="D08-yY-5PE"/>
-                                            <constraint firstAttribute="width" constant="157" id="niK-G4-0zQ"/>
+                                            <constraint firstAttribute="height" constant="21" id="bXg-3d-WYp"/>
+                                            <constraint firstAttribute="width" constant="157" id="hA8-0O-D4N"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbE-dg-lH3">
-                                        <rect key="frame" x="47" y="206" width="51" height="31"/>
+                                        <rect key="frame" x="126" y="203" width="51" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="31" id="Hvi-on-J20"/>
-                                            <constraint firstAttribute="width" constant="49" id="z7j-SK-Zj1"/>
+                                            <constraint firstAttribute="height" constant="31" id="BaJ-Ij-9W2"/>
+                                            <constraint firstAttribute="width" constant="49" id="o0h-CX-V4h"/>
                                         </constraints>
                                         <color key="onTintColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                     </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZO-9H-9SL">
+                                        <rect key="frame" x="195" y="201" width="97" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="97" id="dWp-VI-2p4"/>
+                                            <constraint firstAttribute="height" constant="36" id="khU-hJ-hwm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                        <state key="normal" title="Import Folder">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="importLocal:" destination="XCh-Rk-nI6" eventType="touchUpInside" id="8fG-db-xrb"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Specify the number of photos you want to import from Panoramio" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="N0a-yb-u6t">
+                                        <rect key="frame" x="8" y="8" width="284" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="Qay-8r-5lJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.32000000000000001" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="hbE-dg-lH3" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="47" id="1kI-F3-a5W"/>
-                                    <constraint firstItem="mVK-av-bg7" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="12" id="2MK-p1-0dL"/>
-                                    <constraint firstAttribute="trailing" secondItem="b9f-is-GIz" secondAttribute="trailing" constant="8" id="7Fv-xc-ynr"/>
+                                    <constraint firstItem="b9f-is-GIz" firstAttribute="top" secondItem="0l5-kr-Rxg" secondAttribute="bottom" constant="8" id="28p-4w-poK"/>
+                                    <constraint firstItem="hbE-dg-lH3" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="126" id="Dql-I2-22w"/>
+                                    <constraint firstItem="b9f-is-GIz" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="8" id="EWf-15-pDK"/>
+                                    <constraint firstAttribute="bottom" secondItem="mVK-av-bg7" secondAttribute="bottom" constant="21" id="F40-cY-yeF"/>
                                     <constraint firstAttribute="height" constant="250" id="FcB-0k-lLa"/>
-                                    <constraint firstItem="hbE-dg-lH3" firstAttribute="top" secondItem="mVK-av-bg7" secondAttribute="bottom" constant="8" id="GOb-Ha-Kct"/>
-                                    <constraint firstItem="L9I-dB-La2" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="8" id="Igv-lC-LX7"/>
-                                    <constraint firstItem="L9I-dB-La2" firstAttribute="centerY" secondItem="7vi-Hc-NoD" secondAttribute="centerY" id="Lel-2p-JyL"/>
+                                    <constraint firstAttribute="bottom" secondItem="hbE-dg-lH3" secondAttribute="bottom" constant="16" id="Fzc-ON-QK3"/>
+                                    <constraint firstItem="N0a-yb-u6t" firstAttribute="top" secondItem="7vi-Hc-NoD" secondAttribute="top" constant="8" id="KP1-zM-Ly1"/>
+                                    <constraint firstItem="L9I-dB-La2" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="8" id="Kmb-pm-2ha"/>
                                     <constraint firstAttribute="width" constant="300" id="MIv-fx-Wzr"/>
-                                    <constraint firstAttribute="trailing" secondItem="L9I-dB-La2" secondAttribute="trailing" constant="8" id="MWJ-rE-fRx"/>
-                                    <constraint firstAttribute="bottom" secondItem="OZO-9H-9SL" secondAttribute="bottom" constant="8" id="Pck-dx-TdN"/>
-                                    <constraint firstAttribute="bottom" secondItem="hbE-dg-lH3" secondAttribute="bottom" constant="13" id="gac-5r-gda"/>
-                                    <constraint firstAttribute="trailing" secondItem="OZO-9H-9SL" secondAttribute="trailing" constant="8" id="mMV-Ir-KUV"/>
-                                    <constraint firstItem="b9f-is-GIz" firstAttribute="top" secondItem="7vi-Hc-NoD" secondAttribute="top" constant="44" id="nVh-Vt-NVN"/>
-                                    <constraint firstItem="b9f-is-GIz" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="8" id="wEp-iG-ZeC"/>
+                                    <constraint firstItem="0l5-kr-Rxg" firstAttribute="top" secondItem="WNi-ne-mo0" secondAttribute="bottom" id="W1g-OX-yZI"/>
+                                    <constraint firstItem="L9I-dB-La2" firstAttribute="top" secondItem="b9f-is-GIz" secondAttribute="bottom" constant="8" id="WsP-MJ-YwL"/>
+                                    <constraint firstItem="WNi-ne-mo0" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="8" id="Xkn-O6-GkG"/>
+                                    <constraint firstAttribute="trailing" secondItem="0l5-kr-Rxg" secondAttribute="trailing" constant="8" id="Xyz-40-Sqo"/>
+                                    <constraint firstAttribute="trailing" secondItem="WNi-ne-mo0" secondAttribute="trailing" constant="8" id="cqY-i6-xXM"/>
+                                    <constraint firstAttribute="trailing" secondItem="L9I-dB-La2" secondAttribute="trailing" constant="8" id="gL0-N3-YGP"/>
+                                    <constraint firstAttribute="bottom" secondItem="OZO-9H-9SL" secondAttribute="bottom" constant="13" id="hS7-M2-gDc"/>
+                                    <constraint firstItem="mVK-av-bg7" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="8" id="kES-Le-0IR"/>
+                                    <constraint firstAttribute="trailing" secondItem="OZO-9H-9SL" secondAttribute="trailing" constant="8" id="q9e-vR-mH7"/>
+                                    <constraint firstAttribute="trailing" secondItem="b9f-is-GIz" secondAttribute="trailing" constant="8" id="yXi-nD-Gf3"/>
+                                    <constraint firstAttribute="trailing" secondItem="N0a-yb-u6t" secondAttribute="trailing" constant="8" id="yq0-kg-gNp"/>
+                                    <constraint firstItem="WNi-ne-mo0" firstAttribute="top" secondItem="N0a-yb-u6t" secondAttribute="bottom" constant="8" id="yt2-pF-zsP"/>
+                                    <constraint firstItem="N0a-yb-u6t" firstAttribute="leading" secondItem="7vi-Hc-NoD" secondAttribute="leading" constant="8" id="zSg-Ke-ccg"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -217,6 +256,7 @@
                         <outlet property="importPathTextfield" destination="L9I-dB-La2" id="L4F-ag-Uux"/>
                         <outlet property="keepOriginal" destination="hbE-dg-lH3" id="etQ-Te-adz"/>
                         <outlet property="progressView" destination="fQ1-ru-OzC" id="PGE-f9-yGo"/>
+                        <outlet property="remoteImportCount" destination="WNi-ne-mo0" id="xhp-9N-gnn"/>
                         <outlet property="setupView" destination="7vi-Hc-NoD" id="VuI-et-H93"/>
                     </connections>
                 </viewController>
