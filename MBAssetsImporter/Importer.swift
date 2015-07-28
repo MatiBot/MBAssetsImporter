@@ -17,6 +17,11 @@ protocol ImporterDelegate : NSObjectProtocol{
 
 class Importer {
     
+    // MARK: Properties
+    
+    weak var delegate:ImporterDelegate?
+    var shouldContinue: Bool = true
+    
     init() {
         delegate = nil
     }
@@ -28,10 +33,4 @@ class Importer {
     func cancel(){
         shouldContinue = false
     }
-    
-    weak var delegate:ImporterDelegate?
-    
-    // MARK: Properties
-    
-    var shouldContinue: Bool = true
 }
