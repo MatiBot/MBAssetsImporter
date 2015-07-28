@@ -6,7 +6,7 @@ MBAssetsImporter enables you to import an entire directory full of videos and ph
 
 ## Screenshots
 
-Folder Selection             |  Importing
+Source Selection             |  Importing
 :-------------------------:|:-------------------------:
 ![](https://raw.github.com/matibot/MBAssetsImporter/master/Readme/main.png)  |  ![](https://raw.github.com/matibot/MBAssetsImporter/master/Readme/importing.png) 
 
