@@ -6,13 +6,14 @@
 //  Copyright © 2015 Mati Bot. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 protocol ImporterDelegate : NSObjectProtocol{
     func onError(error:NSError)
     func onStart()
     func onFinish()
-    func onProgress(progress:Float, filename:String)
+    func onProgress(progress:Float, filename:String, image:UIImage?)
 }
 
 class Importer {

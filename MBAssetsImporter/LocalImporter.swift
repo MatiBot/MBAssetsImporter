@@ -52,11 +52,13 @@ class LocalImporter : Importer {
         }
         
         let file = files[index]
+        let fileURL = path.stringByAppendingPathComponent(file)
         
-        self.delegate?.onProgress(Float(imagesProcessed) / Float(numAssets), filename: file.lastPathComponent)
+        let image = UIImage(contentsOfFile: fileURL)
+        self.delegate?.onProgress(Float(imagesProcessed) / Float(numAssets), filename: file.lastPathComponent, image:image)
         
         PHPhotoLibrary.requestAuthorization { (status : PHAuthorizationStatus) -> Void in
-            let fileURL = path.stringByAppendingPathComponent(file)
+            
             
             PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
                 
@@ -97,7 +99,7 @@ class LocalImporter : Importer {
             delegate?.onError(NSError(domain: "", code: 100, userInfo: [NSLocalizedDescriptionKey:"No assets were found in the specified address"]))
         }
         else{
-            delegate?.onProgress(0, filename: "Starting")
+            delegate?.onProgress(0, filename: "Starting", image: nil)
             self.shouldContinue = true
             importAssets(path, numAssets: numAssets)
             self.delegate?.onStart()

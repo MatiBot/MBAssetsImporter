@@ -24,6 +24,7 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
     @IBOutlet weak var keepOriginal: UISwitch!
     @IBOutlet weak var importPathTextfield: UITextField!
     @IBOutlet weak var remoteImportCount: UITextField!
+    @IBOutlet weak var background: UIImageView!
     
     // MARK: Properties
     
@@ -89,9 +90,12 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
         importer = nil
     }
     
-    func onProgress(progress:Float, filename:String){
+    func onProgress(progress:Float, filename:String, image:UIImage?){
         self.circularProgressBar.percent = 100 * CGFloat(progress)
         self.fileLabel.text = filename
+        if(image != nil){
+            self.background.image = image
+        }
     }
     
     func onError(error:NSError){

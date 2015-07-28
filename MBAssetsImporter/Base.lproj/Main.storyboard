@@ -251,6 +251,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="MBAssetsImporter" id="Mg6-0X-Q6M"/>
                     <connections>
+                        <outlet property="background" destination="HKD-35-Gpl" id="fZz-MX-DaE"/>
                         <outlet property="circularProgressBar" destination="JWH-r7-rLd" id="GXJ-Pf-R2M"/>
                         <outlet property="fileLabel" destination="8ic-N3-x31" id="9ge-Zu-fWM"/>
                         <outlet property="importPathTextfield" destination="L9I-dB-La2" id="L4F-ag-Uux"/>
