@@ -81,6 +81,7 @@ class PanoramioImporter: Importer {
         let long = photo["longitude"] as! Double
         let dateStr = photo["upload_date"] as! String
         
+        //update delegate with progress
         self.delegate?.onProgress(Float(index+1) / Float(photos.count), filename: title)
         
         PHPhotoLibrary.requestAuthorization { (status : PHAuthorizationStatus) -> Void in
@@ -97,7 +98,6 @@ class PanoramioImporter: Importer {
                     
                     if(!success && error != nil){
                         self.delegate?.onError(error!)
-                        
                     }
                     
                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
