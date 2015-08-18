@@ -12,11 +12,17 @@ Source Selection             |  Importing
 
 ## Usage
 
-1. Download the projects from github either by clicking the Download ZIP button or clone.
+1. Download the project from github either by clicking the Download ZIP button or clone.
 2. Open MBAssetsImporter.xcworkspace with XCode
-3. Run the projects on iOS Simulator (>=8.0)
-4. Type the path on your OS X that you wish to import assets from
-5. Click import
+3. Run the project on iOS Simulator (>=8.0)
+
+#### Import from OS X
+1. Type the path on your OS X that you wish to import assets from 
+2. Click Import Folder
+
+#### Import from Panoramio
+1. Specify the number of images
+2. click Import from Panoramio
 
 ## Author
 
