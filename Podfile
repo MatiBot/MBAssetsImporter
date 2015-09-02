@@ -7,4 +7,4 @@ platform :ios, '8.0'
 use_frameworks!
 xcodeproj 'MBAssetsImporter'
 
-pod "MBCircularProgressBar", '~> 0.1.5'
+pod "MBCircularProgressBar", '~> 0.3.1'

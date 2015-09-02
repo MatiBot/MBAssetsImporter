@@ -84,14 +84,14 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
     }
     
     func onFinish(){
-        self.circularProgressBar.percent = 0;
+        self.circularProgressBar.value = 0;
         self.progressView.hidden = true
         self.setupView.hidden = false
         importer = nil
     }
     
     func onProgress(progress:Float, filename:String, image:UIImage?){
-        self.circularProgressBar.percent = 100 * CGFloat(progress)
+        self.circularProgressBar.value = 100 * CGFloat(progress)
         self.fileLabel.text = filename
         if(image != nil){
             self.background.image = image

@@ -44,7 +44,7 @@ class LocalImporter : Importer {
         self.importAssets(0, path: path, files: files, imagesProcessed: 0, numAssets: numAssets)
     }
     
-    func importAssets(index : Int, path : String!, files : Array<String>, imagesProcessed : Int, numAssets:Int)
+    func importAssets(index : Int, path : String, files : Array<String>, imagesProcessed : Int, numAssets:Int)
     {
         if(self.shouldContinue == false){
             self.delegate?.onFinish()
