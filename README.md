@@ -1,10 +1,6 @@
 # MBAssetsImporter
 
-## Description
-
 MBAssetsImporter enables you to import an entire directory full of videos and photos to your iOS simulator including their metadata.
-
-## Screenshots
 
 Local Directory             |  Panoramio
 :-------------------------:|:-------------------------:
