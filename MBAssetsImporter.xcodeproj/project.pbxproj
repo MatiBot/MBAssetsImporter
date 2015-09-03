@@ -14,7 +14,6 @@
 		449D89EB1B66305D00A5013F /* MBAssetsImporterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D89EA1B66305D00A5013F /* MBAssetsImporterViewController.swift */; };
 		449D89EE1B66305D00A5013F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 449D89EC1B66305D00A5013F /* Main.storyboard */; };
 		449D89F01B66305D00A5013F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 449D89EF1B66305D00A5013F /* Assets.xcassets */; };
-		449D89F31B66305D00A5013F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 449D89F11B66305D00A5013F /* LaunchScreen.storyboard */; };
 		A646FC3F0EE956870D6630F1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078BABDC0EDA0AE4F65293CF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -29,7 +28,6 @@
 		449D89EA1B66305D00A5013F /* MBAssetsImporterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBAssetsImporterViewController.swift; sourceTree = "<group>"; };
 		449D89ED1B66305D00A5013F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		449D89EF1B66305D00A5013F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		449D89F21B66305D00A5013F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		449D89F41B66305D00A5013F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC77C73F13B8176CFA646A66 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +80,6 @@
 				449D89EA1B66305D00A5013F /* MBAssetsImporterViewController.swift */,
 				449D89EC1B66305D00A5013F /* Main.storyboard */,
 				449D89EF1B66305D00A5013F /* Assets.xcassets */,
-				449D89F11B66305D00A5013F /* LaunchScreen.storyboard */,
 				449D89F41B66305D00A5013F /* Info.plist */,
 			);
 			path = MBAssetsImporter;
@@ -158,7 +155,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				449D89F31B66305D00A5013F /* LaunchScreen.storyboard in Resources */,
 				449D89F01B66305D00A5013F /* Assets.xcassets in Resources */,
 				449D89EE1B66305D00A5013F /* Main.storyboard in Resources */,
 			);
@@ -236,14 +232,6 @@
 				449D89ED1B66305D00A5013F /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		449D89F11B66305D00A5013F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				449D89F21B66305D00A5013F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
