@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import Foundation
+import CoreLocation
 
 class PanoramioImporter: Importer {
     
@@ -46,17 +47,14 @@ class PanoramioImporter: Importer {
         task = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: url)!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
         
             if(data != nil){
-                do{
-                    var ret : Dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as! Dictionary<String, AnyObject>
+                var ret : Dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0), error:nil) as! Dictionary<String, AnyObject>
                     
                     let photos = ret["photos"] as! Array<Dictionary<String,AnyObject>>
                     
                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                         self.importPhotos(photos, index: 0)
                     })
-                }catch _{
-                
-                }
+
             }else{
                 self.delegate?.onFinish()
             }

@@ -44,7 +44,7 @@ class LocalImporter : Importer {
         self.importAssets(0, path: path, files: files, imagesProcessed: 0, numAssets: numAssets)
     }
     
-    func importAssets(index : Int, path : String, files : Array<String>, imagesProcessed : Int, numAssets:Int)
+    func importAssets(index : Int, path : String!, files : Array<String>, imagesProcessed : Int, numAssets:Int)
     {
         if(self.shouldContinue == false){
             self.delegate?.onFinish()
@@ -73,11 +73,7 @@ class LocalImporter : Importer {
                         self.delegate?.onError(error!)
                         
                     }else if(self.keepOriginal == false){
-                        do{
-                            try NSFileManager.defaultManager().removeItemAtPath(fileURL)
-                        }catch _{
-                            
-                        }
+                        NSFileManager.defaultManager().removeItemAtPath(fileURL, error: nil)
                     }
                     
                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
@@ -115,12 +111,12 @@ class LocalImporter : Importer {
     
     func isPhoto(file : String) -> Bool
     {
-        return photosExtensions.contains(file.pathExtension.lowercaseString)
+        return contains(photosExtensions,file.pathExtension.lowercaseString)
     }
     
     func isVideo(file : String) -> Bool
     {
-        return videosExtensions.contains(file.pathExtension.lowercaseString)
+        return contains(videosExtensions,file.pathExtension.lowercaseString)
     }
 
 }

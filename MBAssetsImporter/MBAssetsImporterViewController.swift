@@ -36,7 +36,7 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
         super.viewDidLoad()
         self.importPathTextfield.text = defaultAddress
         
-        if TARGET_OS_SIMULATOR != 1 {
+        if TARGET_IPHONE_SIMULATOR != 1 {
             self.importPathTextfield.enabled = false
             keepOriginal.enabled = false
         }else{
@@ -57,7 +57,7 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
     
     @IBAction func importLocal(sender: UIButton) {
         
-        if TARGET_OS_SIMULATOR == 1 {
+        if TARGET_IPHONE_SIMULATOR == 1 {
             let path = self.importPathTextfield.text;
             importer = LocalImporter(path: path!, keepOriginal: keepOriginal.on)
             importer?.delegate = self
@@ -70,7 +70,8 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
     }
     
     @IBAction func importFlickr(sender: UIButton) {
-        importer = PanoramioImporter(numberOfPictures: Int(remoteImportCount.text!)!)
+        let count = remoteImportCount.text.toInt()!
+        importer = PanoramioImporter(numberOfPictures: count)
         importer?.delegate = self
         importer?.start()
     }
@@ -84,14 +85,14 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
     }
     
     func onFinish(){
-        self.circularProgressBar.value = 0;
+        self.circularProgressBar.percent = 0;
         self.progressView.hidden = true
         self.setupView.hidden = false
         importer = nil
     }
     
     func onProgress(progress:Float, filename:String, image:UIImage?){
-        self.circularProgressBar.value = 100 * CGFloat(progress)
+        self.circularProgressBar.percent = 100 * CGFloat(progress)
         self.fileLabel.text = filename
         if(image != nil){
             self.background.image = image
