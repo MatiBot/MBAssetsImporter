@@ -6,9 +6,9 @@ MBAssetsImporter enables you to import an entire directory full of videos and ph
 
 ## Screenshots
 
-Source Selection             |  Importing
+Local Directory             |  Panoramio
 :-------------------------:|:-------------------------:
-![](https://raw.github.com/matibot/MBAssetsImporter/master/Readme/main.png)  |  ![](https://raw.github.com/matibot/MBAssetsImporter/master/Readme/importing.png) 
+![](https://raw.github.com/matibot/MBAssetsImporter/master/Readme/folder.gif)  |  ![](https://raw.github.com/matibot/MBAssetsImporter/master/Readme/panoramio.gif)
 
 ## Usage
 
@@ -17,7 +17,7 @@ Source Selection             |  Importing
 3. Run the project on iOS Simulator (>=8.0)
 
 #### Import from OS X
-1. Type the path on your OS X that you wish to import assets from 
+1. Type the path on your OS X that you wish to import assets from
 2. Click Import Folder
 
 #### Import from Panoramio
