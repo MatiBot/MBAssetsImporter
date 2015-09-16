@@ -22,7 +22,7 @@ Local Directory             |  Panoramio
 
 #### Import from Panoramio
 1. Specify the number of images
-2. click Import from Panoramio
+2. Click Import from Panoramio
 
 ## Author
 
