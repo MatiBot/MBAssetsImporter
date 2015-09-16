@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		441911311BA994F3003BDBC9 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441911301BA994F3003BDBC9 /* String+Utils.swift */; settings = {ASSET_TAGS = (); }; };
 		44943D641B67BC0D00612AC3 /* PanoramioImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44943D611B67BC0D00612AC3 /* PanoramioImporter.swift */; };
 		44943D651B67BC0D00612AC3 /* LocalImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44943D621B67BC0D00612AC3 /* LocalImporter.swift */; };
 		44943D661B67BC0D00612AC3 /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44943D631B67BC0D00612AC3 /* Importer.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		078BABDC0EDA0AE4F65293CF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C1F16A9CA63C0DE3E590967 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		441911301BA994F3003BDBC9 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		44943D611B67BC0D00612AC3 /* PanoramioImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanoramioImporter.swift; sourceTree = "<group>"; };
 		44943D621B67BC0D00612AC3 /* LocalImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalImporter.swift; sourceTree = "<group>"; };
 		44943D631B67BC0D00612AC3 /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		449D89E71B66305D00A5013F /* MBAssetsImporter */ = {
 			isa = PBXGroup;
 			children = (
+				441911301BA994F3003BDBC9 /* String+Utils.swift */,
 				44943D611B67BC0D00612AC3 /* PanoramioImporter.swift */,
 				44943D621B67BC0D00612AC3 /* LocalImporter.swift */,
 				44943D631B67BC0D00612AC3 /* Importer.swift */,
@@ -217,6 +220,7 @@
 			files = (
 				44943D661B67BC0D00612AC3 /* Importer.swift in Sources */,
 				449D89EB1B66305D00A5013F /* MBAssetsImporterViewController.swift in Sources */,
+				441911311BA994F3003BDBC9 /* String+Utils.swift in Sources */,
 				44943D641B67BC0D00612AC3 /* PanoramioImporter.swift in Sources */,
 				449D89E91B66305D00A5013F /* AppDelegate.swift in Sources */,
 				44943D651B67BC0D00612AC3 /* LocalImporter.swift in Sources */,

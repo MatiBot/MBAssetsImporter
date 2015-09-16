@@ -47,13 +47,19 @@ class PanoramioImporter: Importer {
         task = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: url)!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
         
             if(data != nil){
-                var ret : Dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0), error:nil) as! Dictionary<String, AnyObject>
+                
+                do{
+                
+                    var ret : Dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as! Dictionary<String, AnyObject>
+                        
+                        let photos = ret["photos"] as! Array<Dictionary<String,AnyObject>>
+                        
+                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                            self.importPhotos(photos, index: 0)
+                        })
+                }catch _ {
                     
-                    let photos = ret["photos"] as! Array<Dictionary<String,AnyObject>>
-                    
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                        self.importPhotos(photos, index: 0)
-                    })
+                }
 
             }else{
                 self.delegate?.onFinish()

@@ -70,8 +70,8 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
     }
     
     @IBAction func importFlickr(sender: UIButton) {
-        let count = remoteImportCount.text.toInt()!
-        importer = PanoramioImporter(numberOfPictures: count)
+        let count = Int(remoteImportCount.text!)
+        importer = PanoramioImporter(numberOfPictures: count!)
         importer?.delegate = self
         importer?.start()
     }

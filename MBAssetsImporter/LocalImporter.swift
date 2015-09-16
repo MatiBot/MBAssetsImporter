@@ -73,7 +73,12 @@ class LocalImporter : Importer {
                         self.delegate?.onError(error!)
                         
                     }else if(self.keepOriginal == false){
-                        NSFileManager.defaultManager().removeItemAtPath(fileURL, error: nil)
+                        do {
+                            try NSFileManager.defaultManager().removeItemAtPath(fileURL)
+                        }
+                        catch _ {
+                            
+                        }
                     }
                     
                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
@@ -111,12 +116,12 @@ class LocalImporter : Importer {
     
     func isPhoto(file : String) -> Bool
     {
-        return contains(photosExtensions,file.pathExtension.lowercaseString)
+        return photosExtensions.contains(file.pathExtension.lowercaseString)
     }
     
     func isVideo(file : String) -> Bool
     {
-        return contains(videosExtensions,file.pathExtension.lowercaseString)
+        return videosExtensions.contains(file.pathExtension.lowercaseString)
     }
 
 }
