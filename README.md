@@ -12,6 +12,7 @@ Local Directory             |  Panoramio
 
 ## Usage
 
+0. Must use Xcode 7 and above (Using Swift 2.0)
 1. Download the project from github either by clicking the Download ZIP button or clone.
 2. Open MBAssetsImporter.xcworkspace with XCode
 3. Run the project on iOS Simulator (>=8.0)
