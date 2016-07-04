@@ -31,7 +31,7 @@ class LocalImporter : Importer {
         if(enumerator != nil){
             while let file = enumerator!.nextObject() as? String {
                 if (isAsset(file)){
-                    num++;
+                    num += 1
                 }
             }
         }

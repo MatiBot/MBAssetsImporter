@@ -45,7 +45,7 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
             remoteImportCount.inputView = dummyView
         }
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.DismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
