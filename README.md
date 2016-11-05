@@ -6,7 +6,7 @@ MBAssetsImporter enables you to import an entire directory full of videos and ph
 
 ## Screenshots
 
-Local Directory             |  Panoramio
+Local Directory             |  Pixabay
 :-------------------------:|:-------------------------:
 ![](https://raw.github.com/matibot/MBAssetsImporter/master/Readme/folder.gif)  |  ![](https://raw.github.com/matibot/MBAssetsImporter/master/Readme/panoramio.gif)
 
