@@ -22,9 +22,9 @@ class PixabayImporter: Importer {
     }
     
     override func start() {
-        if (numberOfPictures == 0)
+        if (numberOfPictures <= 2 || numberOfPictures > 200)
         {
-            delegate?.onError(NSError(domain: "", code: 100, userInfo: [NSLocalizedDescriptionKey:"Please s"]))
+            delegate?.onError(NSError(domain: "", code: 100, userInfo: [NSLocalizedDescriptionKey:"Please specify a number above 2 and less than 200"]))
         }
         else{
             delegate?.onProgress(0, filename: "Starting", image: nil)
@@ -82,10 +82,10 @@ class PixabayImporter: Importer {
         if let url = url {
             let data = try! Data(contentsOf: url)
             let image = UIImage(data: data)!
-            let title = "Image \(index)" //photo["photo_title"] as! String
-            let lat = 1.0//photo["latitude"] as! Double
-            let long = 1.0//photo["longitude"] as! Double
-            let date = Date.init();//photo["upload_date"] as! String
+            let title = "Image \(index)"
+            let lat = 1.0
+            let long = 1.0
+            let date = Date.init();
             
             //update delegate with progress
             self.delegate?.onProgress(Float(index+1) / Float(photos.count), filename: title, image:image)
