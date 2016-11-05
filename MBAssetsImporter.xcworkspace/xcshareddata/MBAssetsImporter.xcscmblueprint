@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4EB90391E8B36DC466C126AA296AF001B9D958AF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4EB90391E8B36DC466C126AA296AF001B9D958AF" : 9223372036854775807,
+    "666EBCD23F5DB1B0099E8ACF4F7D9A2EFEA39B51" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D75DEC45-E92B-4204-B369-D38D026D2187",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4EB90391E8B36DC466C126AA296AF001B9D958AF" : "AssetsImporter\/",
+    "666EBCD23F5DB1B0099E8ACF4F7D9A2EFEA39B51" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MBAssetsImporter",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MBAssetsImporter.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MatiBot\/MBAssetsImporter.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4EB90391E8B36DC466C126AA296AF001B9D958AF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MatiBot\/MBRateApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "666EBCD23F5DB1B0099E8ACF4F7D9A2EFEA39B51"
+    }
+  ]
+}

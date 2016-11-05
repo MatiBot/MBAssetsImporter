@@ -23,6 +23,7 @@
 @dynamic emptyLineWidth;
 @dynamic progressAngle;
 @dynamic emptyLineColor;
+@dynamic emptyLineStrokeColor;
 @dynamic emptyCapType;
 @dynamic progressCapType;
 @dynamic fontColor;
@@ -33,9 +34,14 @@
 @dynamic valueFontName;
 @dynamic showUnitString;
 @dynamic showValueString;
-
+@dynamic textOffset;
+@dynamic countdown;
 
 #pragma mark - Drawing
+
+//-(void)setValue:(CGFloat)value{
+//    [self drawProgressBar:<#(CGSize)#> context:<#(CGContextRef)#>]
+//}
 
 - (void) drawInContext:(CGContextRef) context{
     [super drawInContext:context];
@@ -78,9 +84,12 @@
     
     
     CGContextAddPath(c, strokedArc);
-    CGContextSetStrokeColorWithColor(c, self.emptyLineColor.CGColor);
+    CGContextSetStrokeColorWithColor(c, self.emptyLineStrokeColor.CGColor);
     CGContextSetFillColorWithColor(c, self.emptyLineColor.CGColor);
     CGContextDrawPath(c, kCGPathFillStroke);
+    
+    CGPathRelease(arc);
+    CGPathRelease(strokedArc);
 }
 
 - (void)drawProgressBar:(CGSize)rectSize context:(CGContextRef)c{
@@ -109,6 +118,9 @@
     CGContextSetFillColorWithColor(c, self.progressColor.CGColor);
     CGContextSetStrokeColorWithColor(c, self.progressStrokeColor.CGColor);
     CGContextDrawPath(c, kCGPathFillStroke);
+    
+    CGPathRelease(arc);
+    CGPathRelease(strokedArc);
 }
 
 - (void)drawText:(CGSize)rectSize context:(CGContextRef)c
@@ -125,9 +137,15 @@
   NSMutableAttributedString *text = [NSMutableAttributedString new];
   
   NSString *formatString = [NSString stringWithFormat:@"%%.%df", (int)self.decimalPlaces];
-  NSAttributedString* value =
-  [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:formatString, self.value] attributes:valueFontAttributes];
-  
+    
+  NSString* textToPresent;
+  if (self.countdown) {
+    textToPresent = [NSString stringWithFormat:formatString, (self.maxValue - self.value)];
+  } else {
+    textToPresent = [NSString stringWithFormat:formatString, self.value];
+  }
+  NSAttributedString* value = [[NSAttributedString alloc] initWithString:textToPresent
+                                                                attributes:valueFontAttributes];
   [text appendAttributedString:value];
   
   // set the decimal font size
@@ -148,10 +166,12 @@
   }
   
   CGSize percentSize = [text size];
+  CGPoint textCenter = CGPointMake(
+    rectSize.width/2-percentSize.width/2 + self.textOffset.x,
+    rectSize.height/2-percentSize.height/2 + self.textOffset.y
+  );
   
-  [text drawAtPoint:CGPointMake(rectSize.width/2-percentSize.width/2,
-                                rectSize.height/2-percentSize.height/2)];
-  
+  [text drawAtPoint:textCenter];
 }
 
 #pragma mark - Override methods to support animations
@@ -165,18 +185,22 @@
 
 - (id<CAAction>)actionForKey:(NSString *)event{
     if ([self presentationLayer] != nil) {
-        if ([event isEqualToString:@"value"] && self.animated) {
-            CABasicAnimation *anim = [CABasicAnimation
-                                      animationWithKeyPath:@"value"];
-            anim.fromValue = [[self presentationLayer]
-                              valueForKey:@"value"];
-            anim.duration = self.animationDuration;
-            return anim;
+        if ([event isEqualToString:@"value"]) {  
+            id animation = [super actionForKey:@"backgroundColor"];
+            
+            if (animation == nil || [animation isEqual:[NSNull null]])
+            {
+                [self setNeedsDisplay];
+                return [NSNull null];
+            }
+            [animation setKeyPath:event];
+            [animation setFromValue:@([self.presentationLayer value])];
+            [animation setToValue:nil];
+            return animation;
         }
     }
     
     return [super actionForKey:event];
 }
-
 
 @end

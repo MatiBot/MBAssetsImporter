@@ -25,9 +25,9 @@ class LocalImporter : Importer {
     
     // MARK: Import Methods
     
-    func numberOfAssetsInPath(path : String) -> Int{
+    func numberOfAssetsInPath(_ path : String) -> Int{
         var num = 0;
-        let enumerator = NSFileManager.defaultManager().enumeratorAtPath(path);
+        let enumerator = FileManager.default.enumerator(atPath: path);
         if(enumerator != nil){
             while let file = enumerator!.nextObject() as? String {
                 if (isAsset(file)){
@@ -39,12 +39,12 @@ class LocalImporter : Importer {
         return num;
     }
     
-    func importAssets(path : String, numAssets:Int){
-        let files = NSFileManager.defaultManager().enumeratorAtPath(path)!.allObjects as! Array<String>
+    func importAssets(_ path : String, numAssets:Int){
+        let files = FileManager.default.enumerator(atPath: path)!.allObjects as! Array<String>
         self.importAssets(0, path: path, files: files, imagesProcessed: 0, numAssets: numAssets)
     }
     
-    func importAssets(index : Int, path : String!, files : Array<String>, imagesProcessed : Int, numAssets:Int)
+    func importAssets(_ index : Int, path : String!, files : Array<String>, imagesProcessed : Int, numAssets:Int)
     {
         if(self.shouldContinue == false){
             self.delegate?.onFinish()
@@ -60,28 +60,28 @@ class LocalImporter : Importer {
         PHPhotoLibrary.requestAuthorization { (status : PHAuthorizationStatus) -> Void in
             
             
-            PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+            PHPhotoLibrary.shared().performChanges({ () -> Void in
                 
                 if(self.isVideo(fileURL)){
-                    PHAssetChangeRequest.creationRequestForAssetFromVideoAtFileURL(NSURL.fileURLWithPath(fileURL))
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL(fileURLWithPath: fileURL))
                 }else if(self.isPhoto(fileURL)){
-                    PHAssetChangeRequest.creationRequestForAssetFromImageAtFileURL(NSURL.fileURLWithPath(fileURL))
+                    PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: URL(fileURLWithPath: fileURL))
                 }
-                }, completionHandler: { (success : Bool, error : NSError?) -> Void in
+                }, completionHandler: { (success : Bool, error : Error?) -> Void in
                     
                     if(!success && error != nil){
                         self.delegate?.onError(error!)
                         
                     }else if(self.keepOriginal == false){
                         do {
-                            try NSFileManager.defaultManager().removeItemAtPath(fileURL)
+                            try FileManager.default.removeItem(atPath: fileURL)
                         }
                         catch _ {
                             
                         }
                     }
                     
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    OperationQueue.main.addOperation({ () -> Void in
                         if index + 1 < files.count{
                             self.importAssets(index + 1, path: path, files: files, imagesProcessed: imagesProcessed + 1, numAssets: numAssets)
                         }else{
@@ -109,19 +109,19 @@ class LocalImporter : Importer {
     
     // MARK: Convenient Methods
     
-    func isAsset(file : String) -> Bool
+    func isAsset(_ file : String) -> Bool
     {
         return isPhoto(file) || isVideo(file)
     }
     
-    func isPhoto(file : String) -> Bool
+    func isPhoto(_ file : String) -> Bool
     {
-        return photosExtensions.contains(file.pathExtension.lowercaseString)
+        return photosExtensions.contains(file.pathExtension.lowercased())
     }
     
-    func isVideo(file : String) -> Bool
+    func isVideo(_ file : String) -> Bool
     {
-        return videosExtensions.contains(file.pathExtension.lowercaseString)
+        return videosExtensions.contains(file.pathExtension.lowercased())
     }
 
 }

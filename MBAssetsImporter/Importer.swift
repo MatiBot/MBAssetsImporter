@@ -10,10 +10,10 @@ import UIKit
 import Foundation
 
 protocol ImporterDelegate : NSObjectProtocol{
-    func onError(error:NSError)
+    func onError(_ error:Error)
     func onStart()
     func onFinish()
-    func onProgress(progress:Float, filename:String, image:UIImage?)
+    func onProgress(_ progress:Float, filename:String, image:UIImage?)
 }
 
 class Importer {

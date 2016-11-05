@@ -37,10 +37,10 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
         self.importPathTextfield.text = defaultAddress
         
         if TARGET_IPHONE_SIMULATOR != 1 {
-            self.importPathTextfield.enabled = false
-            keepOriginal.enabled = false
+            self.importPathTextfield.isEnabled = false
+            keepOriginal.isEnabled = false
         }else{
-            let dummyView = UIView(frame: CGRectMake(0, 0, 0, 0))
+            let dummyView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
             importPathTextfield.inputView = dummyView;
             remoteImportCount.inputView = dummyView
         }
@@ -51,27 +51,27 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
     
     // MARK: IBActions
 
-    @IBAction func cancelAction(sender: UIButton) {
+    @IBAction func cancelAction(_ sender: UIButton) {
         importer?.cancel()
     }
     
-    @IBAction func importLocal(sender: UIButton) {
+    @IBAction func importLocal(_ sender: UIButton) {
         
         if TARGET_IPHONE_SIMULATOR == 1 {
             let path = self.importPathTextfield.text;
-            importer = LocalImporter(path: path!, keepOriginal: keepOriginal.on)
+            importer = LocalImporter(path: path!, keepOriginal: keepOriginal.isOn)
             importer?.delegate = self
             importer?.start()
         }else{
-            let alertController = UIAlertController(title: "", message: "Please run the app on the iOS simulator in order to import assets from a local directory", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(alertController, animated: true, completion:nil)
+            let alertController = UIAlertController(title: "", message: "Please run the app on the iOS simulator in order to import assets from a local directory", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion:nil)
         }
     }
     
-    @IBAction func importFlickr(sender: UIButton) {
+    @IBAction func importFlickr(_ sender: UIButton) {
         let count = Int(remoteImportCount.text!)
-        importer = PanoramioImporter(numberOfPictures: count!)
+        importer = PixabayImporter(numberOfPictures: count!)
         importer?.delegate = self
         importer?.start()
     }
@@ -80,18 +80,18 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
     
     func onStart(){
         view.endEditing(true)
-        self.progressView.hidden = false
-        self.setupView.hidden = true
+        self.progressView.isHidden = false
+        self.setupView.isHidden = true
     }
     
     func onFinish(){
         self.circularProgressBar.value = 0;
-        self.progressView.hidden = true
-        self.setupView.hidden = false
+        self.progressView.isHidden = true
+        self.setupView.isHidden = false
         importer = nil
     }
     
-    func onProgress(progress:Float, filename:String, image:UIImage?){
+    func onProgress(_ progress:Float, filename:String, image:UIImage?){
         self.circularProgressBar.value = 100 * CGFloat(progress)
         self.fileLabel.text = filename
         if(image != nil){
@@ -99,7 +99,7 @@ class MBAssetsImporterViewController: UIViewController, ImporterDelegate {
         }
     }
     
-    func onError(error:NSError){
+    func onError(_ error:Error){
         print(error.localizedDescription)
     }
     
