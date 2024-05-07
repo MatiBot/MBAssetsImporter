@@ -27,7 +27,7 @@ Local Directory             |  Pixabay
 
 ## Author
 
-Mati Bot, matibot@gmail.com, [@b0tnik](https://twitter.com/b0tnik)
+Mati Bot, os@mati.bot, [@b0tnik](https://twitter.com/b0tnik)
 
 ## License
 
